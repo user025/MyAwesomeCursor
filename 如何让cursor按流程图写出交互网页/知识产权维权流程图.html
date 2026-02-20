@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>知识产权维权流程图（当事人视角）</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #faf9f7;
+      --card: #fff;
+      --text: #1a1a1a;
+      --muted: #5c5c5c;
+      --accent: #2c5282;
+      --fail: #c53030;
+      --fail-bg: #fff5f5;
+      --border: #e8e6e3;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 2rem 1rem 3rem;
+      font-family: 'DM Sans', 'PingFang SC', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+    }
+    .wrap {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-family: 'Noto Serif SC', serif;
+      font-weight: 700;
+      font-size: 1.75rem;
+      margin: 0 0 0.5rem;
+      color: var(--text);
+    }
+    .source {
+      margin-bottom: 2rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .source a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .source a:hover { text-decoration: underline; }
+    section {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--border);
+    }
+    section h2 {
+      font-family: 'Noto Serif SC', serif;
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin: 0 0 1rem;
+      color: var(--text);
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--border);
+    }
+    #flowchart {
+      overflow-x: auto;
+      padding: 1rem 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    #flowchart .mermaid {
+      min-width: 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+    th, td {
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+      border: 1px solid var(--border);
+    }
+    th {
+      background: var(--bg);
+      font-weight: 600;
+      color: var(--text);
+    }
+    tr.fail-row td:first-child { color: var(--fail); font-weight: 500; }
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .checklist li {
+      padding: 0.5rem 0 0.5rem 1.75rem;
+      position: relative;
+    }
+    .checklist li::before {
+      content: '☐';
+      position: absolute;
+      left: 0;
+      font-size: 1.1rem;
+    }
+    .checklist strong { color: var(--text); }
+    .agency-link {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .agency-link:hover { text-decoration: underline; }
+    .footer {
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    @media (max-width: 640px) {
+      body { padding: 1rem 0.75rem 2rem; }
+      section { padding: 1rem 1.25rem; }
+      th, td { padding: 0.5rem; font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>知识产权维权流程图（当事人视角）</h1>
+    <p class="source">依据：<a href="https://zscq.ln.gov.cn/zscq/tzgg/2024092410214838895/index.shtml" target="_blank" rel="noopener">辽宁省知识产权局 - 知识产权维权实务指引</a></p>
+
+    <section>
+      <h2>一、流程图</h2>
+      <div id="flowchart">
+        <div class="mermaid">
+flowchart TD
+    Start([权利受侵害的当事人]) --> Check{是否符合申请条件?}
+    Check -->|否| Fail1[❌ 失败：不在辖区<br>户籍/经常居住地/营业地 或 侵权行为发生地<br>均不在维权援助机构辖区]
+    Check -->|是| Prep[准备申请材料]
+    Prep --> Submit[提交维权援助申请<br>中国知识产权维权援助网 ipwq.cn/online_pc]
+    Submit --> Review[机构 15 个工作日内审查]
+    Review --> MaterialOK{材料是否<br>完整、充分?}
+    MaterialOK -->|否| Notice[发出《补正通知书》]
+    Notice --> Supplement{7 个工作日内<br>是否按要求补正?}
+    Supplement -->|否| Fail2[❌ 失败：视为主动撤回申请]
+    Supplement -->|是| Review
+    MaterialOK -->|是| Accept{是否受理?}
+    Accept -->|不予受理| Fail3[❌ 失败：不予受理<br>机构说明理由]
+    Fail3 --> Appeal{7 个工作日内<br>是否提起申诉?}
+    Appeal -->|否| EndFail1[维权援助程序终结]
+    Appeal -->|是| AppealResult[向所属知识产权管理部门申诉]
+    AppealResult --> AppealOK{申诉结果}
+    AppealOK -->|维持不予受理| Fail4[❌ 失败：申诉维持<br>维权援助程序终结]
+    AppealOK -->|撤销并受理| Process
+    Accept -->|受理| Process[进入维权援助处理]
+    Process --> Type{援助需求类型}
+    Type -->|咨询| C1[提供咨询指导意见]
+    Type -->|侵权判定| C2[按流程提供侵权判定参考意见]
+    Type -->|重大公共纠纷| C3[提供解决方案或建议]
+    Type -->|分析预警/培训/驻场等| C4[协调资源提供相应服务]
+    Type -->|调解| Mediate{双方是否同意调解?}
+    Mediate -->|否| Fail5[❌ 失败：无法开展调解<br>可另行寻求行政/司法/仲裁等途径]
+    Mediate -->|是| C5[开展调解工作]
+    C1 --> EndOK[获得援助服务]
+    C2 --> EndOK
+    C3 --> EndOK
+    C4 --> EndOK
+    C5 --> MediateResult{调解是否达成?}
+    MediateResult -->|是| EndOK
+    MediateResult -->|否| Fail6[❌ 调解未达成<br>可另行起诉或仲裁等]
+    style Fail1 fill:#fcc
+    style Fail2 fill:#fcc
+    style Fail3 fill:#fcc
+    style Fail4 fill:#fcc
+    style Fail5 fill:#fcc
+    style Fail6 fill:#fcc
+    style EndFail1 fill:#fcc
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>二、失败节点汇总</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>节点</th>
+            <th>说明</th>
+            <th>对应依据</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="fail-row">
+            <td>失败①</td>
+            <td><strong>不符合辖区条件</strong>：申请人户籍地、经常居住地、营业地及侵权行为发生地均不在维权援助机构辖区，无法向该机构申请。</td>
+            <td>第三部分 申请条件</td>
+          </tr>
+          <tr class="fail-row">
+            <td>失败②</td>
+            <td><strong>视为主动撤回</strong>：收到《补正通知书》后，7 个工作日内未按要求补充或说明，视为主动撤回申请。</td>
+            <td>第四部分 受理程序</td>
+          </tr>
+          <tr class="fail-row">
+            <td>失败③</td>
+            <td><strong>不予受理</strong>：机构审查后决定不予受理并说明理由。</td>
+            <td>第四部分 受理程序</td>
+          </tr>
+          <tr class="fail-row">
+            <td>失败④</td>
+            <td><strong>申诉维持</strong>：对不予受理提起申诉后，知识产权管理部门维持不予受理决定，维权援助程序终结。</td>
+            <td>第四部分 受理程序</td>
+          </tr>
+          <tr class="fail-row">
+            <td>失败⑤</td>
+            <td><strong>无法开展调解</strong>：当事人申请/委托/委派调解，但对方不同意调解，无法开展调解。</td>
+            <td>第五部分 申请处理第 5 项</td>
+          </tr>
+          <tr class="fail-row">
+            <td>失败⑥</td>
+            <td><strong>调解未达成</strong>：双方同意调解但最终未达成一致，维权援助中的调解程序结束，需另行通过诉讼、仲裁等途径维权。</td>
+            <td>第五部分 申请处理第 5 项</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>三、申请前自检清单（降低失败概率）</h2>
+      <ul class="checklist">
+        <li><strong>辖区</strong>：户籍地 / 经常居住地 / 营业地 <strong>或</strong> 侵权行为发生地，至少有一项在该维权援助机构辖区内。</li>
+        <li><strong>材料</strong>：已准备《知识产权维权援助申请表》、有效身份证明（或统一社会信用代码等）、事项与事由及证明材料、机构要求的其他材料，且完整、充分、真实。</li>
+        <li><strong>补正</strong>：若收到《补正通知书》，在 <strong>7 个工作日内</strong> 按要求补充或说明，避免被视为主动撤回。</li>
+        <li><strong>申诉</strong>：若对不予受理不服，在收到通知后 <strong>7 个工作日内</strong> 向该机构所属知识产权管理部门提起申诉。</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>四、辽宁省维权援助机构（申请入口）</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>机构</th>
+            <th>申请网址</th>
+            <th>电话</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>辽宁省知识产权保护中心</td>
+            <td><a class="agency-link" href="http://www.ipwq.cn/online_pc" target="_blank" rel="noopener">中国知识产权维权援助网</a></td>
+            <td>024-57819133</td>
+          </tr>
+          <tr>
+            <td>沈阳市知识产权保护中心</td>
+            <td><a class="agency-link" href="http://www.ipwq.cn/online_pc" target="_blank" rel="noopener">中国知识产权维权援助网</a></td>
+            <td>024-23897719</td>
+          </tr>
+          <tr>
+            <td>大连市知识产权保护中心</td>
+            <td><a class="agency-link" href="http://www.ipwq.cn/online_pc" target="_blank" rel="noopener">中国知识产权维权援助网</a></td>
+            <td>0411-84312999-1219</td>
+          </tr>
+          <tr>
+            <td>鞍山市知识产权维权援助中心</td>
+            <td><a class="agency-link" href="http://www.ipwq.cn/online_pc" target="_blank" rel="noopener">中国知识产权维权援助网</a></td>
+            <td>0412-5723345</td>
+          </tr>
+          <tr>
+            <td>本溪市知识产权维权援助中心</td>
+            <td><a class="agency-link" href="http://www.ipwq.cn/online_pc" target="_blank" rel="noopener">中国知识产权维权援助网</a></td>
+            <td>024-43618718</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <p class="footer">流程图与失败节点整理自《知识产权维权实务指引》，具体以官方最新规定为准。</p>
+  </div>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'neutral',
+      flowchart: {
+        useMaxWidth: true,
+        htmlLabels: true,
+        curve: 'basis'
+      }
+    });
+  </script>
+</body>
+</html>

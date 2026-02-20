@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>知识产权维权 · 文字冒险</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+  <div class="progress-wrap">
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+
+  <div id="backpack">
+    <button type="button" id="backpack-toggle" aria-label="打开背包" title="背包">🎒</button>
+    <div id="backpack-content">
+      <div class="backpack-header">📦 我的道具</div>
+      <div class="backpack-body" id="backpackBody"></div>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+
+  <button type="button" class="nav-arrow" id="arrow-prev" aria-label="上一步">&lt;</button>
+  <button type="button" class="nav-arrow" id="arrow-next" aria-label="下一步">&gt;</button>
+
+  <div class="wrap">
+    <div id="stepContainer" role="main" aria-live="polite" aria-label="当前步骤"></div>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

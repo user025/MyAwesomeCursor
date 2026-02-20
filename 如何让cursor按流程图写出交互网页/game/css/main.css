@@ -1,0 +1,313 @@
+/* 知识产权维权 · 文字冒险 - 主样式 */
+:root {
+  --bg: #faf9f7;
+  --card: #fff;
+  --text: #1a1a1a;
+  --muted: #5c5c5c;
+  --primary: #2c5282;
+  --primary-soft: #e6f0fa;
+  --border: #e8e6e3;
+  --fail: #c53030;
+  --fail-bg: #fff5f5;
+  --success: #276749;
+  --success-bg: #f0fff4;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  min-height: 100vh;
+}
+
+/* 进度条 */
+.progress-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: var(--border);
+  z-index: 1001;
+}
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--primary), #4299e1);
+  border-radius: 0 4px 4px 0;
+  transition: width 0.4s ease;
+}
+
+/* 背包 */
+#backpack {
+  position: fixed;
+  top: 1.5rem;
+  left: 1.5rem;
+  z-index: 1000;
+}
+#backpack-toggle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 14px rgba(44, 82, 130, 0.35);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#backpack-toggle:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px rgba(44, 82, 130, 0.4);
+}
+#backpack-toggle:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+#backpack-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 10px;
+  width: 320px;
+  max-width: calc(100vw - 2rem);
+  background: var(--card);
+  border-radius: 14px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+  border: 1px solid var(--border);
+  transform: scale(0.96);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.25s ease, opacity 0.25s ease, visibility 0.25s;
+  max-height: 65vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+#backpack.active #backpack-content {
+  transform: scale(1);
+  opacity: 1;
+  visibility: visible;
+}
+.backpack-header {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  font-weight: 600;
+  color: var(--text);
+  font-size: 1rem;
+}
+.backpack-body {
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  overflow-y: auto;
+  flex: 1;
+}
+.item-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.item-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+.item-card .item-icon {
+  font-size: 1.75rem;
+  margin-bottom: 6px;
+}
+.item-card .item-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.item-card .item-desc {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 4px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.backpack-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Toast */
+#toast-container {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+}
+.toast-msg {
+  background: var(--primary);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(44, 82, 130, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  animation: toastIn 0.4s ease;
+}
+.toast-msg .toast-icon { font-size: 1.25rem; }
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 主内容区 */
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 3rem;
+  min-height: 100vh;
+}
+.step {
+  display: none;
+  min-height: 70vh;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.step.active {
+  display: block;
+  opacity: 1;
+}
+.step-content {
+  text-align: center;
+  padding: 1rem 0;
+}
+.step-content .step-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+.step-content h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+  color: var(--text);
+}
+.step-content .step-body {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--muted);
+  margin-bottom: 2rem;
+  text-align: left;
+}
+.step-content .choices {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.btn-option {
+  font-size: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: inherit;
+  font-weight: 500;
+  text-align: center;
+}
+.btn-option:hover {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+  transform: translateY(-1px);
+}
+.btn-option:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+.step.end-fail .step-body { color: var(--fail); }
+.step.end-ok .step-body { color: var(--success); }
+.btn-restart {
+  margin-top: 1.5rem;
+  padding: 0.9rem 2rem;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: none;
+  background: var(--primary);
+  color: white;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-restart:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(44, 82, 130, 0.35);
+}
+
+/* 导航箭头 */
+.nav-arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: var(--card);
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  color: var(--muted);
+  z-index: 100;
+}
+.nav-arrow:hover:not(.disabled) {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-50%) scale(1.05);
+}
+.nav-arrow.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+#arrow-prev { left: 1rem; }
+#arrow-next { right: 1rem; }
+
+@media (max-width: 640px) {
+  .wrap { padding: 3.5rem 1rem 2rem; }
+  .step-content h2 { font-size: 1.35rem; }
+  .nav-arrow { width: 40px; height: 40px; left: 0.5rem; }
+  #arrow-next { right: 0.5rem; }
+}
