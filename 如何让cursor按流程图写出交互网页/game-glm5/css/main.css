@@ -1,0 +1,189 @@
+:root {
+  --bg: #f6f8fb;
+  --card: #ffffff;
+  --text: #1a2433;
+  --muted: #5f6c80;
+  --border: #dde4ee;
+  --primary: #1f6feb;
+  --primary-soft: #eaf2ff;
+  --ok: #0a7d33;
+  --warn: #d03939;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Noto Sans SC", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+.page {
+  width: min(980px, 94vw);
+  margin: 24px auto 56px;
+}
+
+.hero {
+  margin-bottom: 12px;
+}
+
+.hero h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+}
+
+.hero p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.progress {
+  margin-top: 12px;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 12px;
+}
+
+.panel h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+
+.status {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.metric {
+  background: #f9fbff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.metric span {
+  display: block;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.metric strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 26px;
+}
+
+.skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+}
+
+.skill {
+  text-align: left;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--text);
+  padding: 10px;
+  cursor: pointer;
+}
+
+.skill .skill-name {
+  display: block;
+  font-weight: 600;
+}
+
+.skill .skill-desc {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.skill:hover {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+
+.skill.active {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+
+.skill.used {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.section {
+  margin-top: 0;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.fact-card {
+  margin: 10px 0 14px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #cfe0ff;
+  background: #f7fbff;
+  color: #27406d;
+}
+
+.options {
+  display: grid;
+  gap: 10px;
+}
+
+.option-btn,
+.restart-btn {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--text);
+  padding: 10px 12px;
+  text-align: left;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.option-btn:hover,
+.restart-btn:hover {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+
+.restart-btn {
+  width: 220px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.log ul,
+#logList {
+  margin: 0;
+  padding-left: 20px;
+}
+
+#logList li {
+  margin: 6px 0;
+  color: var(--muted);
+}
+
+@media (max-width: 760px) {
+  .status {
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+  }
+}
