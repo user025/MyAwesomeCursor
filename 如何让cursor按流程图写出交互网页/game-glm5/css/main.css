@@ -1,13 +1,16 @@
 :root {
-  --bg: #f6f8fb;
-  --card: #ffffff;
-  --text: #1a2433;
-  --muted: #5f6c80;
-  --border: #dde4ee;
-  --primary: #1f6feb;
-  --primary-soft: #eaf2ff;
-  --ok: #0a7d33;
-  --warn: #d03939;
+  --bg: #0f1521;
+  --bg-soft: #151f30;
+  --card: #1b2739;
+  --card-2: #22324a;
+  --text: #e8eef8;
+  --muted: #a9b6cc;
+  --border: #334867;
+  --primary: #64a0ff;
+  --primary-2: #7cc8ff;
+  --ok: #4ad87b;
+  --warn: #ff6666;
+  --gold: #f8cf61;
 }
 
 * {
@@ -16,23 +19,22 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Noto Sans SC", sans-serif;
   color: var(--text);
-  background: var(--bg);
+  background:
+    radial-gradient(circle at 15% 10%, #1d2b42 0%, #0f1521 35%),
+    radial-gradient(circle at 90% 0%, #18283f 0%, #0f1521 55%);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Noto Sans SC", sans-serif;
 }
 
 .page {
-  width: min(980px, 94vw);
+  width: min(1040px, 95vw);
   margin: 24px auto 56px;
-}
-
-.hero {
-  margin-bottom: 12px;
 }
 
 .hero h1 {
   margin: 0 0 8px;
-  font-size: 28px;
+  font-size: 30px;
+  letter-spacing: 0.5px;
 }
 
 .hero p {
@@ -42,46 +44,98 @@ body {
 
 .progress {
   margin-top: 12px;
-  color: var(--primary);
-  font-weight: 600;
+  color: var(--primary-2);
+  font-weight: 700;
 }
 
 .panel {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 16px;
   margin-top: 12px;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.05)), var(--card);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
 }
 
 .panel h2 {
   margin: 0 0 10px;
-  font-size: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.mode-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 10px;
+}
+
+.mode-btn {
+  border: 1px solid var(--border);
+  background: var(--card-2);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 12px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.mode-btn:hover,
+.mode-btn.active {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px rgba(100, 160, 255, 0.25) inset;
+}
+
+.mode-name {
+  display: block;
+  font-weight: 700;
+}
+
+.mode-desc {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 13px;
 }
 
 .status {
   display: grid;
-  grid-template-columns: repeat(5, minmax(120px, 1fr));
+  grid-template-columns: repeat(4, minmax(140px, 1fr));
   gap: 10px;
 }
 
 .metric {
-  background: #f9fbff;
   border: 1px solid var(--border);
+  background: rgba(12, 21, 34, 0.45);
   border-radius: 10px;
-  padding: 10px 12px;
+  padding: 10px;
 }
 
 .metric span {
-  display: block;
+  font-size: 12px;
   color: var(--muted);
-  font-size: 13px;
 }
 
 .metric strong {
   display: block;
   margin-top: 4px;
   font-size: 26px;
+}
+
+.meter {
+  margin-top: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #102036;
+  overflow: hidden;
+}
+
+.meter i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--primary), var(--primary-2));
 }
 
 .skills {
@@ -94,52 +148,48 @@ body {
   text-align: left;
   border: 1px solid var(--border);
   border-radius: 10px;
-  background: #fff;
+  background: rgba(26, 39, 58, 0.6);
   color: var(--text);
   padding: 10px;
   cursor: pointer;
 }
 
-.skill .skill-name {
+.skill:hover,
+.skill.active {
+  border-color: var(--primary);
+  background: rgba(49, 73, 108, 0.55);
+}
+
+.skill.used {
+  opacity: 0.42;
+  cursor: not-allowed;
+}
+
+.skill-name {
   display: block;
   font-weight: 600;
 }
 
-.skill .skill-desc {
+.skill-desc {
   display: block;
   margin-top: 4px;
-  color: var(--muted);
   font-size: 13px;
-}
-
-.skill:hover {
-  border-color: var(--primary);
-  background: var(--primary-soft);
-}
-
-.skill.active {
-  border-color: var(--primary);
-  background: var(--primary-soft);
-}
-
-.skill.used {
-  opacity: 0.45;
-  cursor: not-allowed;
+  color: var(--muted);
 }
 
 .section {
   margin-top: 0;
-  color: var(--primary);
+  color: var(--primary-2);
   font-weight: 600;
 }
 
 .fact-card {
   margin: 10px 0 14px;
-  padding: 10px;
+  border: 1px solid #406293;
+  background: #16253b;
   border-radius: 10px;
-  border: 1px solid #cfe0ff;
-  background: #f7fbff;
-  color: #27406d;
+  padding: 10px;
+  color: #cce2ff;
 }
 
 .options {
@@ -148,27 +198,85 @@ body {
 }
 
 .option-btn,
+.reroll-btn,
 .restart-btn {
   border: 1px solid var(--border);
   border-radius: 10px;
-  background: #fff;
+  background: rgba(18, 30, 47, 0.6);
   color: var(--text);
-  padding: 10px 12px;
+  padding: 11px 12px;
   text-align: left;
-  font-size: 15px;
   cursor: pointer;
+  font-size: 15px;
 }
 
 .option-btn:hover,
+.reroll-btn:hover,
 .restart-btn:hover {
   border-color: var(--primary);
-  background: var(--primary-soft);
+  background: rgba(38, 56, 84, 0.7);
 }
 
-.restart-btn {
-  width: 220px;
-  text-align: center;
+.option-btn:disabled,
+.reroll-btn:disabled,
+.restart-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.event-actions {
   margin-top: 10px;
+}
+
+.warn-tip {
+  color: #ffb8b8;
+  margin-bottom: 10px;
+}
+
+.quote-box {
+  border: 1px dashed #5072a5;
+  background: #15253a;
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: #d8e8ff;
+}
+
+.achievement-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 10px;
+}
+
+.achievement {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px;
+  background: rgba(15, 26, 41, 0.55);
+  opacity: 0.6;
+}
+
+.achievement.unlocked {
+  opacity: 1;
+  border-color: #7f6a2e;
+  box-shadow: 0 0 0 1px rgba(248, 207, 97, 0.25) inset;
+}
+
+.achievement-title {
+  font-weight: 700;
+}
+
+.achievement-desc {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.battle-report {
+  color: var(--gold);
+}
+
+.end-actions {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
 .log ul,
@@ -182,8 +290,12 @@ body {
   color: var(--muted);
 }
 
-@media (max-width: 760px) {
+.empty-tip {
+  color: var(--muted);
+}
+
+@media (max-width: 840px) {
   .status {
-    grid-template-columns: repeat(2, minmax(120px, 1fr));
+    grid-template-columns: repeat(2, minmax(140px, 1fr));
   }
 }

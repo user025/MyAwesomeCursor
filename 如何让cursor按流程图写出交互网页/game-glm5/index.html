@@ -14,6 +14,20 @@
       <div id="progress" class="progress"></div>
     </header>
 
+    <section class="panel mode" id="modePanel">
+      <h2>开局模式</h2>
+      <div class="mode-grid">
+        <button class="mode-btn" data-mode="normal">
+          <span class="mode-name">标准模式</span>
+          <span class="mode-desc">平衡体验，适合首次游玩。</span>
+        </button>
+        <button class="mode-btn" data-mode="hard">
+          <span class="mode-name">硬核模式</span>
+          <span class="mode-desc">初始算力更低，噪声压力更高。</span>
+        </button>
+      </div>
+    </section>
+
     <section class="panel status" id="statusPanel"></section>
 
     <section class="panel">
@@ -21,7 +35,19 @@
       <div id="skillsPanel" class="skills"></div>
     </section>
 
+    <section class="panel event hidden" id="eventPanel"></section>
+
     <section class="panel node" id="nodePanel"></section>
+
+    <section class="panel lore" id="lorePanel">
+      <h2>队友语音</h2>
+      <div id="quoteBox" class="quote-box">请选择模式开始游戏。</div>
+    </section>
+
+    <section class="panel achievements" id="achievementsPanel">
+      <h2>成就墙（本地保存）</h2>
+      <div id="achievementList" class="achievement-list"></div>
+    </section>
 
     <section class="panel log">
       <h2>回合记录</h2>
